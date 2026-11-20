@@ -19,17 +19,17 @@ h2{color:var(--red);font-size:15px;letter-spacing:.22em;margin:26px 0 12px;paddi
 h2 span{display:inline-block;background:var(--red);color:#fff;border-radius:50%;width:24px;height:24px;line-height:24px;text-align:center;letter-spacing:0;margin-right:8px;font-size:13px}
 .layout{display:grid;grid-template-columns:1fr 340px;gap:28px;align-items:start}
 @media(max-width:900px){.layout{grid-template-columns:1fr}}
-.cal{border:1px solid var(--line);border-radius:10px;overflow:hidden;max-width:460px}
+.cal{border:1px solid #000;border-radius:10px;overflow:hidden;width:100%;max-width:none;background:#000}
 .cal-h{display:flex;justify-content:space-between;align-items:center;background:var(--ink);color:#fff;padding:10px 14px;font-weight:700;letter-spacing:.08em}
 .cal-h button{background:none;border:0;color:#fff;font-size:20px;cursor:pointer;padding:2px 10px;border-radius:6px}
 .cal-h button:hover{background:rgba(255,255,255,.15)}
 .cal-h button:disabled{opacity:.3;cursor:not-allowed}
 .grid{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;padding:10px;background:#000}
 .dow{font-size:11px;font-weight:700;color:#fff;text-align:center;padding:4px 0;letter-spacing:.08em}
-.day{aspect-ratio:1;border:1px solid #333;border-radius:8px;background:#000;color:#fff;font-size:15px;cursor:pointer}
+.day{aspect-ratio:1;border:1px solid #222;border-radius:8px;background:#000;color:#fff;font-size:15px;cursor:pointer}
 .day:hover:not(:disabled){border-color:#fff;background:#222}
 .day:disabled{background:#000;color:#555;cursor:not-allowed}
-.day.busy:disabled{background:#1a1a1a;color:#777;text-decoration:line-through}
+.day.busy:disabled{background:#1b1b1b;color:#777;text-decoration:line-through}
 .day.sel{background:#fff;color:#000;border-color:#fff;font-weight:800}
 .legend{font-size:12px;color:#fff;background:#000;padding:8px 14px;border-top:1px solid #333;display:flex;gap:14px;flex-wrap:wrap}
 .legend i{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:5px}
@@ -59,10 +59,7 @@ input:focus,select:focus,textarea:focus{outline:2px solid var(--red);outline-off
 .sum .b{padding:14px 16px}
 .sum ul{list-style:none;margin:0 0 4px;padding:0;font-size:14px}
 .sum li{display:flex;justify-content:space-between;gap:8px;padding:5px 0;border-bottom:1px dashed var(--line)}
-.sum .calc{padding:10px 16px;background:#fff;border-top:1px solid var(--line);font-size:14px}
-.sum .calc div{display:flex;justify-content:space-between;gap:10px;padding:4px 0}
-.sum .calc .vat{font-weight:700;color:var(--red)}
-.sum .tot{display:flex;justify-content:space-between;background:var(--red);color:#fff;font-weight:800;padding:12px 16px;font-size:18px}
+.sum .calc{padding:10px 16px;background:#fff;border-top:1px solid var(--line);font-size:14px}.sum .calc div{display:flex;justify-content:space-between;gap:10px;padding:4px 0}.sum .calc .vat{font-weight:800;color:var(--red)}.sum .tot{display:flex;justify-content:space-between;background:var(--red);color:#fff;font-weight:800;padding:12px 16px;font-size:18px}
 .empty{color:var(--grey);font-style:italic;font-size:14px}
 .btn{display:block;width:100%;border:0;background:var(--red);color:#fff;font:inherit;font-weight:700;letter-spacing:.08em;padding:14px;border-radius:8px;cursor:pointer;margin-top:14px;font-size:15px}
 .btn:hover{filter:brightness(.92)}
@@ -131,10 +128,7 @@ footer b{color:#FF6B7F}
         <div id="sdate" class="empty">Επίλεξε ημερομηνία</div>
         <ul id="slist"></ul>
       </div>
-      <div class="calc">
-        <div><span>ΥΠΟΣΥΝΟΛΟ</span><b id="ssub">0,00 €</b></div>
-        <div class="vat"><span>+ ΦΠΑ 24%</span><b id="svat">0,00 €</b></div>
-      </div>
+      <div class="calc"><div><span>ΥΠΟΣΥΝΟΛΟ (χωρίς ΦΠΑ)</span><b id="ssub">0,00 €</b></div><div class="vat"><span>+ ΦΠΑ 24%</span><b id="svat">0,00 €</b></div></div>
       <div class="tot"><span>ΓΕΝΙΚΟ ΣΥΝΟΛΟ</span><span id="stot">0,00 €</span></div>
       <div class="b" style="padding-top:0">
         <button class="btn" id="submit" type="button">ΑΠΟΣΤΟΛΗ ΑΙΤΗΜΑΤΟΣ ΚΡΑΤΗΣΗΣ</button>
@@ -142,7 +136,7 @@ footer b{color:#FF6B7F}
       </div>
     </aside>
   </div>
-  <p class="vatnote"><b>Σημείωση τιμών:</b> Όλες οι αναγραφόμενες τιμές είναι χωρίς ΦΠΑ. Στο γενικό σύνολο προστίθεται ΦΠΑ 24%.</p>
+  <p class="vatnote"><b>Σημείωση τιμών:</b> Όλες οι αναγραφόμενες τιμές είναι χωρίς ΦΠΑ. Ο ΦΠΑ 24% υπολογίζεται ξεχωριστά και προστίθεται μόνο στο Γενικό Σύνολο.</p>
   </div>
 
   <div class="done" id="done">
@@ -165,10 +159,9 @@ const CONFIG = {
   ownerEmail: "bardequee@outlook.com.gr",   // email που θα λαμβάνει τις παραγγελίες (για κουμπί email)
   ownerWhatsApp: "306972295910",            // WhatsApp με κωδικό χώρας, χωρίς + ή κενά
   web3formsKey: "38749d88-ce63-4e72-a92b-d9f71211aac9",   // Access Key Web3Forms (αυτόματο email με κάθε κράτηση)
-  // Supabase: βάλε εδώ τα στοιχεία από Project Settings > API
-  supabaseUrl: "ΒΑΛΕ_ΕΔΩ_SUPABASE_PROJECT_URL",
-  supabaseAnonKey: "ΒΑΛΕ_ΕΔΩ_SUPABASE_ANON_KEY",
-  blockedUrl: "blocked.json", // προαιρετικό fallback για χειροκίνητες κλεισμένες ημέρες
+  supabaseUrl: "https://cuagotbmdxmuxnwnoybu.supabase.co",
+  supabaseAnonKey: "sb_publishable_NFVoZ-H9gVsIw5oSm7zgCg_y5wUVTlg",
+  blockedUrl: "blocked.json",               // προαιρετικό fallback
   blockedDates: [],          // χειροκίνητα κλεισμένες ημερομηνίες, π.χ. ["2026-12-24","2026-12-25"]
   minLeadDays: 3,            // ελάχιστες ημέρες από σήμερα
   maxMonthsAhead: 12,
@@ -179,16 +172,12 @@ const CONFIG = {
   helperBase: 70             // βοηθός χωρίς ΦΠΑ
 };
 const vatAmount = n => Math.round(n * CONFIG.vat * 100) / 100;
-CONFIG.liveCooking = CONFIG.liveBase;     // τιμή χωρίς ΦΠΑ
-CONFIG.helper = CONFIG.helperBase;        // τιμή χωρίς ΦΠΑ
+CONFIG.liveCooking = CONFIG.liveBase;
+CONFIG.helper = CONFIG.helperBase;
 const WEB3FORMS_URL = "https://api.web3forms.com/submit";
 const hasKey = () => CONFIG.web3formsKey && !/ΒΑΛΕ_ΕΔΩ/.test(CONFIG.web3formsKey);
-const hasSupabase = () => /^https:\/\/.+\.supabase\.co$/.test(CONFIG.supabaseUrl) && CONFIG.supabaseAnonKey && !/ΒΑΛΕ_ΕΔΩ/.test(CONFIG.supabaseAnonKey);
-const supabaseHeaders = () => ({
-  "apikey": CONFIG.supabaseAnonKey,
-  "Authorization": "Bearer " + CONFIG.supabaseAnonKey,
-  "Content-Type": "application/json"
-});
+const hasSupabase = () => CONFIG.supabaseUrl.includes(".supabase.co") && CONFIG.supabaseAnonKey.startsWith("sb_publishable_");
+const supabaseHeaders = () => ({apikey:CONFIG.supabaseAnonKey, Authorization:"Bearer "+CONFIG.supabaseAnonKey, "Content-Type":"application/json"});
 const MENU = [
   {id:"margherita", name:"Margherita",  desc:"Σάλτσα ντομάτας, παρμεζάνα, mozzarella", price:14, icon:"🌿"},
   {id:"mushrooms",  name:"Mushrooms",   desc:"Λευκή σάλτσα, παρμεζάνα, mozzarella, λάδι τρούφας, μανιτάρια", price:17, icon:"🌿"},
@@ -216,52 +205,25 @@ const qty = {}; MENU.forEach(p => qty[p.id]=0);
 $("liveP").textContent = eur(CONFIG.liveCooking);
 $("helperP").textContent = eur(CONFIG.helper);
 
-/* Φορτώνει τις κλεισμένες ημέρες από Supabase και, προαιρετικά, από blocked.json */
+/* Διαθεσιμότητα από Supabase */
 async function loadAvailability(){
   blocked = new Set(CONFIG.blockedDates);
-  if(hasSupabase()){
-    try{
-      const url = CONFIG.supabaseUrl + "/rest/v1/reservations?select=booking_date&order=booking_date.asc";
-      const r = await fetch(url, {headers: supabaseHeaders(), cache:"no-store"});
-      if(!r.ok) throw new Error("Supabase availability " + r.status);
-      const rows = await r.json();
-      rows.forEach(x => blocked.add(String(x.booking_date).slice(0,10)));
-    }catch(e){
-      console.error("Αδυναμία φόρτωσης Supabase", e);
-      $("err").textContent = "Δεν ήταν δυνατός ο έλεγχος διαθεσιμότητας. Δοκίμασε ξανά.";
-    }
-  }
-  if(CONFIG.blockedUrl){
-    try{
-      const r = await fetch(CONFIG.blockedUrl + "?t=" + Date.now(), {cache:"no-store"});
-      if(r.ok){
-        const j = await r.json();
-        (Array.isArray(j)?j:(j.blocked||[])).forEach(d => blocked.add(String(d).trim().slice(0,10)));
-      }
-    }catch(e){ console.warn("Αδυναμία φόρτωσης blocked.json", e); }
-  }
-  if(selected && blocked.has(selected)){ selected = null; updatePicked(); updateSummary(); }
+  try{
+    const r=await fetch(CONFIG.supabaseUrl+"/rest/v1/reservations?select=booking_date&order=booking_date.asc",{headers:supabaseHeaders(),cache:"no-store"});
+    if(!r.ok) throw new Error("Supabase "+r.status+" "+await r.text());
+    (await r.json()).forEach(x=>blocked.add(String(x.booking_date).slice(0,10)));
+  }catch(e){ console.error(e); $("err").textContent="Δεν ήταν δυνατός ο έλεγχος διαθεσιμότητας. Κάνε ανανέωση και δοκίμασε ξανά."; }
   renderCal();
 }
-
-/* Atomic reservation: το UNIQUE booking_date αποτρέπει διπλοκράτηση */
 async function reserveDate(o){
-  if(!hasSupabase()) return {ok:true, skipped:true};
+  if(!hasSupabase()) return {ok:false};
   try{
-    const r = await fetch(CONFIG.supabaseUrl + "/rest/v1/reservations", {
-      method:"POST",
-      headers:{...supabaseHeaders(), "Prefer":"return=minimal"},
-      body:JSON.stringify({booking_date:o.date, booking_id:o.id})
-    });
+    const r=await fetch(CONFIG.supabaseUrl+"/rest/v1/reservations",{method:"POST",headers:{...supabaseHeaders(),Prefer:"return=minimal"},body:JSON.stringify({booking_date:o.date,booking_id:o.id})});
     if(r.ok) return {ok:true};
-    const body = await r.text();
-    if(r.status === 409 || /duplicate key|23505/i.test(body)) return {ok:false, conflict:true};
-    console.error("Supabase reservation error", r.status, body);
-    return {ok:false, error:true};
-  }catch(e){
-    console.error("Supabase connection error", e);
-    return {ok:false, error:true};
-  }
+    const body=await r.text();
+    if(r.status===409||/23505|duplicate key/i.test(body)) return {ok:false,conflict:true};
+    console.error(r.status,body); return {ok:false};
+  }catch(e){console.error(e);return {ok:false};}
 }
 function renderCal(){
   $("mtitle").textContent = MONTHS[view.getMonth()] + " " + view.getFullYear();
@@ -394,17 +356,11 @@ $("submit").onclick = async () => {
     $("err").textContent = "Η ημερομηνία μόλις έκλεισε. Διάλεξε άλλη ημέρα.";
     return;
   }
-
-  /* Κλείδωμα ημερομηνίας στο Supabase πριν σταλεί το email */
-  const reservation = await reserveDate(o);
+  const reservation=await reserveDate(o);
   if(!reservation.ok){
-    $("submit").disabled = false;
-    if(reservation.conflict){
-      blocked.add(o.date); renderCal();
-      $("err").textContent = "Η ημερομηνία μόλις έκλεισε. Διάλεξε άλλη διαθέσιμη ημέρα.";
-    }else{
-      $("err").textContent = "Δεν ολοκληρώθηκε η κράτηση επειδή δεν ήταν δυνατή η σύνδεση με το ημερολόγιο. Δοκίμασε ξανά.";
-    }
+    $("submit").disabled=false;
+    if(reservation.conflict){ blocked.add(o.date); renderCal(); }
+    $("err").textContent=reservation.conflict ? "Η ημερομηνία μόλις έκλεισε. Διάλεξε άλλη διαθέσιμη ημέρα." : "Δεν ολοκληρώθηκε η σύνδεση με το ημερολόγιο κρατήσεων. Δοκίμασε ξανά.";
     return;
   }
   blocked.add(o.date); renderCal();
