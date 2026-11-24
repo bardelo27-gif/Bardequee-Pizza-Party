@@ -525,6 +525,7 @@ const CONFIG = {
   helper: 70,     // Βοηθητικό προσωπικό (χωρίς ΦΠΑ)
   ownerEmail: 'bardequee@outlook.com.gr',
   ownerWhatsApp: '306972295910',
+  makeWebhook: 'https://hook.eu1.make.com/nkky4bguu3bxwjr9bz9lp8am15qoitjg',
   web3formsKey: '38749d88-ce63-4e72-a92b-d9f71211aac9',
   supabaseUrl: 'https://cuagotbmdxmuxnwnoybu.supabase.co',
   supabaseKey: 'sb_publishable_NFVoZ-H9gVsIw5oSm7zgCg_y5wUVTlg'
@@ -753,6 +754,21 @@ $('submit').onclick = async ()=>{
       body:JSON.stringify({access_key:CONFIG.web3formsKey,subject:'Νέα κράτηση Bardequee · '+fmt(selected)+' · '+$('name').value,
         from_name:'Bardequee Booking',name:$('name').value,email:$('email').value,replyto:$('email').value,phone:$('phone').value,
         message:text,botcheck:$('botcheck').checked})});
+  }catch(e){console.warn(e)}
+
+  /* Outlook Calendar μέσω Make */
+  try{
+    const items = ALL.filter(([i])=>qty[i]).map(([i,n,,p,type])=>`${qty[i]} x ${type} ${n}`).join(', ');
+    await fetch(CONFIG.makeWebhook,{method:'POST',mode:'no-cors',
+      body:new URLSearchParams({
+        booking_id:id, date:selected, time:$('time').value,
+        start:selected+'T'+$('time').value+':00',
+        guests:$('guests').value||'', venue:$('venue').value||'',
+        name:$('name').value, phone:$('phone').value, email:$('email').value,
+        helpers:String(t.helpers||0), menu:items,
+        subtotal:t.subtotal.toFixed(2), vat:t.vat.toFixed(2), total:t.total.toFixed(2),
+        notes:$('notes').value||'', details:text
+      })});
   }catch(e){console.warn(e)}
 
   $('form').style.display='none'; $('done').style.display='block'; mbar.remove();
