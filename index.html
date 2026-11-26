@@ -210,6 +210,8 @@ section{position:relative}
 .err{color:#e79a8a;font-size:13px;white-space:pre-line;padding:0 30px 16px}
 .err:empty{display:none}
 .bot{display:none}
+.algy{display:flex;gap:26px;padding:6px 0 4px}.algy label{display:flex;align-items:center;gap:8px;font-size:16px;letter-spacing:0;text-transform:none;color:inherit;margin:0;cursor:pointer}.algy input{width:18px;height:18px;accent-color:var(--gold);margin:0}
+#allergyTxt{display:none;margin-top:10px}
 
 .done{display:none;text-align:center;padding:110px 30px;border:1px solid var(--gold);margin-top:80px;background:linear-gradient(170deg,#12100b,#080807)}
 .done h3{font-family:var(--serif);font-weight:400;font-size:clamp(40px,5vw,70px);margin:18px 0}
@@ -472,11 +474,12 @@ section[id]{scroll-margin-top:96px}
 <div class="field"><label data-i18n="l_name">Ονοματεπώνυμο / Εταιρεία *</label><input autocomplete="name" id="name"/></div>
 <div class="field"><label data-i18n="l_phone">Τηλέφωνο *</label><input autocomplete="tel" id="phone" type="tel"/></div>
 </div>
+<div class="field"><label data-i18n="l_allergy">Υπάρχει κάποια αλλεργία ή διατροφικός περιορισμός; *</label><div class="algy"><label><input name="algy" type="radio" value="no"/> <span data-i18n="a_no">Όχι</span></label><label><input name="algy" type="radio" value="yes"/> <span data-i18n="a_yes">Ναι</span></label></div><input id="allergyTxt" data-i18n-ph="ph_allergy" placeholder="Γράψε ποια, π.χ. γλουτένη, λακτόζη, ξηροί καρποί"/></div>
+<div class="field"><label data-i18n="l_notes">Σχόλια</label><textarea id="notes" rows="3" data-i18n-ph="ph_notes" placeholder="Ό,τι άλλο θέλεις να ξέρουμε για το event σου"></textarea></div>
 <div class="row">
 <div class="field"><label>Email *</label><input autocomplete="email" id="email" type="email"/></div>
 <div class="field"><label data-i18n="l_venue">Χώρος event (διεύθυνση)</label><input id="venue"/></div>
 </div>
-<div class="field"><label data-i18n="l_notes">Σημειώσεις / αλλεργίες</label><textarea id="notes" rows="3"></textarea></div>
 <label class="bot"><input id="botcheck" type="checkbox"/> bot</label>
 </div>
 </div>
@@ -599,18 +602,18 @@ const cursor = new Date(); cursor.setDate(1);
 
 
 /* ---------- Language (EL / EN) ---------- */
-const I18N_EN = {"nav_story": "Story", "nav_book": "Book an event", "hero_p": "Pizza and Pinsa Romana, made with slow-fermented dough and baked live at your venue. Fire, dough and people become the heart of your event.", "hero_cta": "Book a date", "story": "<strong>Our story started with… a truly bad pizza.</strong><br/><br/>It all began on a trip to Kalamata with my friends. On the first night we decided to order pizza. When it arrived, it was so disappointing that we ended up not eating it.<br/><br/>Somewhere between the teasing, I said on impulse:<br/><br/><strong>“When we get back to Athens, I’ll try to make a really good pizza at home myself.”</strong><br/><br/>What started as a simple challenge between friends quickly turned into a passion.<br/><br/>I started experimenting with doughs, fermentation times, temperatures, baking techniques and ingredients. The more I learned, the more I realised how much was still left to discover.<br/><br/>That search led me to courses and training alongside top pizzaioli — not just to learn how to make pizza, but to truly understand dough, fire and the craft behind every bake.<br/><br/>And so, what began in a home kitchen for friends started travelling to more tables, gatherings and events.<br/><br/>That’s how <strong>Bardequee</strong> was born.<br/><br/>Today, Bardequee isn’t just pizza catering. It’s a <strong>live cooking experience</strong>. The oven, the prep, the fire and the baking come to your venue and become part of the night.<br/><br/><strong>Good dough. Real fire. Great people.<br/>This is Bardequee.</strong>", "stat_hours": "Hours of fermentation", "proof_p": "Fire and baking take centre stage. Less talk, more to see — and one clear path to your booking.", "follow_p": "Want to see more of my work, our events, the live cooking and everything baking behind the fire? Scan the QR code and visit Bardequee on Instagram.", "book_p": "Pick an available date, build your menu and see your cost estimate instantly. Booking takes just a few steps, and final confirmation follows once we’ve reviewed your event.", "step1": "Date", "step2": "Menu", "step3": "Services", "step4": "Details", "h_date": "Date &amp; time", "lg_avail": "Available", "lg_sel": "Selected", "lg_busy": "Booked", "l_time": "Start time", "time_hint": "24-hour format · 00:00 – 23:30", "l_guests": "Number of guests", "ph_guests": "e.g. 30", "h_menu": "Your menu", "h_services": "Services", "live_p": "Chef on site &amp; professional equipment · included in every booking", "help_h": "Extra staff", "help_p1": "Prep &amp; service support ·", "help_p2": "per person", "help_rules": "<strong>Staff required by total number of Pizzas &amp; Pinsas:</strong><br>Up to 18 pieces: no extra staff · 19–35: 1 person · 36–50: 2 people · 51–80: 3 people · over 80: 4 people.", "h_details": "Your details", "l_name": "Full name / Company *", "l_phone": "Phone *", "l_venue": "Event venue (address)", "l_notes": "Notes / allergies", "sum_h": "Booking summary", "sum_sub": "Net amount (excl. VAT)", "sum_vat": "+ VAT 24%", "sum_total": "GRAND TOTAL", "submit": "Send request", "done_h": "Your request has been <em class=\"gold\">received.</em>", "wa_btn": "Send via WhatsApp", "mail_btn": "Send via email", "vatnote": "<b>Pricing note:</b> All prices shown exclude VAT. VAT at 24% is calculated separately and added only to the Grand Total.", "foot_p": "Live Pizza &amp; Pinsa Romana cooking experience for private &amp; corporate events.", "m_total": "Total incl. VAT", "m_sum": "Summary ›"};
+const I18N_EN = {"nav_story": "Story", "nav_book": "Book an event", "hero_p": "Pizza and Pinsa Romana, made with slow-fermented dough and baked live at your venue. Fire, dough and people become the heart of your event.", "hero_cta": "Book a date", "story": "<strong>Our story started with… a truly bad pizza.</strong><br/><br/>It all began on a trip to Kalamata with my friends. On the first night we decided to order pizza. When it arrived, it was so disappointing that we ended up not eating it.<br/><br/>Somewhere between the teasing, I said on impulse:<br/><br/><strong>“When we get back to Athens, I’ll try to make a really good pizza at home myself.”</strong><br/><br/>What started as a simple challenge between friends quickly turned into a passion.<br/><br/>I started experimenting with doughs, fermentation times, temperatures, baking techniques and ingredients. The more I learned, the more I realised how much was still left to discover.<br/><br/>That search led me to courses and training alongside top pizzaioli — not just to learn how to make pizza, but to truly understand dough, fire and the craft behind every bake.<br/><br/>And so, what began in a home kitchen for friends started travelling to more tables, gatherings and events.<br/><br/>That’s how <strong>Bardequee</strong> was born.<br/><br/>Today, Bardequee isn’t just pizza catering. It’s a <strong>live cooking experience</strong>. The oven, the prep, the fire and the baking come to your venue and become part of the night.<br/><br/><strong>Good dough. Real fire. Great people.<br/>This is Bardequee.</strong>", "stat_hours": "Hours of fermentation", "proof_p": "Fire and baking take centre stage. Less talk, more to see — and one clear path to your booking.", "follow_p": "Want to see more of my work, our events, the live cooking and everything baking behind the fire? Scan the QR code and visit Bardequee on Instagram.", "book_p": "Pick an available date, build your menu and see your cost estimate instantly. Booking takes just a few steps, and final confirmation follows once we’ve reviewed your event.", "step1": "Date", "step2": "Menu", "step3": "Services", "step4": "Details", "h_date": "Date &amp; time", "lg_avail": "Available", "lg_sel": "Selected", "lg_busy": "Booked", "l_time": "Start time", "time_hint": "24-hour format · 00:00 – 23:30", "l_guests": "Number of guests", "ph_guests": "e.g. 30", "h_menu": "Your menu", "h_services": "Services", "live_p": "Chef on site &amp; professional equipment · included in every booking", "help_h": "Extra staff", "help_p1": "Prep &amp; service support ·", "help_p2": "per person", "help_rules": "<strong>Staff required by total number of Pizzas &amp; Pinsas:</strong><br>Up to 18 pieces: no extra staff · 19–35: 1 person · 36–50: 2 people · 51–80: 3 people · over 80: 4 people.", "h_details": "Your details", "l_name": "Full name / Company *", "l_phone": "Phone *", "l_venue": "Event venue (address)", "l_notes": "Comments", "l_allergy": "Any allergies or dietary restrictions? *", "a_no": "No", "a_yes": "Yes", "ph_allergy": "Please specify, e.g. gluten, lactose, nuts", "ph_notes": "Anything else we should know about your event", "sum_h": "Booking summary", "sum_sub": "Net amount (excl. VAT)", "sum_vat": "+ VAT 24%", "sum_total": "GRAND TOTAL", "submit": "Send request", "done_h": "Your request has been <em class=\"gold\">received.</em>", "wa_btn": "Send via WhatsApp", "mail_btn": "Send via email", "vatnote": "<b>Pricing note:</b> All prices shown exclude VAT. VAT at 24% is calculated separately and added only to the Grand Total.", "foot_p": "Live Pizza &amp; Pinsa Romana cooking experience for private &amp; corporate events.", "m_total": "Total incl. VAT", "m_sum": "Summary ›"};
 const T = {
   el:{noDate:'Δεν έχει επιλεγεί ημερομηνία',noItems:'Δεν έχουν επιλεγεί πίτσες ακόμη.',helpName:'Βοηθητικό προσωπικό',busy:'Κλεισμένη ημερομηνία',
       dow:['ΔΕ','ΤΡ','ΤΕ','ΠΕ','ΠΑ','ΣΑ','ΚΥ'],less:'λιγότερα',more:'περισσότερα',sending:'Αποστολή…',submit:'Αποστολή αιτήματος',
-      eDate:'Διάλεξε διαθέσιμη ημερομηνία.',eItems:'Διάλεξε τουλάχιστον μία pizza ή pinsa.',eName:'Συμπλήρωσε ονοματεπώνυμο.',ePhone:'Συμπλήρωσε τηλέφωνο.',eEmail:'Συμπλήρωσε έγκυρο email.',
+      eDate:'Διάλεξε διαθέσιμη ημερομηνία.',eItems:'Διάλεξε τουλάχιστον μία pizza ή pinsa.',eName:'Συμπλήρωσε ονοματεπώνυμο.',ePhone:'Συμπλήρωσε τηλέφωνο.',eEmail:'Συμπλήρωσε έγκυρο email.',eAlg:'Απάντησε αν υπάρχει κάποια αλλεργία.',eAlgTxt:'Γράψε ποια αλλεργία ή περιορισμό υπάρχει.',
       eTaken:'Η ημερομηνία μόλις έκλεισε. Διάλεξε άλλη.',eFail:'Δεν ολοκληρώθηκε η κράτηση. Δοκίμασε ξανά.',eAvail:'Δεν ήταν δυνατός ο έλεγχος διαθεσιμότητας. Δοκίμασε ξανά σε λίγο.',
       back:'‹ Πίσω',next:'Επόμενο ›',cDate:'Διάλεξε διαθέσιμη ημερομηνία για να συνεχίσεις.',cItems:'Διάλεξε τουλάχιστον μία Pizza ή Pinsa για να συνεχίσεις.',
       code:'Κωδικός κράτησης: ',okTitle:'✅ Ευχαριστούμε! Λάβαμε το αίτημά σας',okBtn:'Εντάξει',changeNote:'✏️ Αλλαγές στην παραγγελία γίνονται έως 3 ημέρες πριν από την εκδήλωση: απαντήστε στο email που θα λάβετε με την τελική σας παραγγελία.',
       done:(d,m)=>`Η ημερομηνία ${d} δεσμεύτηκε για σένα. Θα ελέγξουμε το αίτημά σου και θα επικοινωνήσουμε μαζί σου για την τελική επιβεβαίωση. 📩 Θα λάβεις email στο ${m} — έλεγξε και τον φάκελο Ανεπιθύμητα (Spam) και πάτησε «Δεν είναι ανεπιθύμητο», ώστε να λάβεις κανονικά την επιβεβαίωση και την οικονομική προσφορά.`},
   en:{noDate:'No date selected yet',noItems:'No pizzas selected yet.',helpName:'Extra staff',busy:'Date already booked',
       dow:['MO','TU','WE','TH','FR','SA','SU'],less:'fewer',more:'more',sending:'Sending…',submit:'Send request',
-      eDate:'Please pick an available date.',eItems:'Please choose at least one pizza or pinsa.',eName:'Please enter your full name.',ePhone:'Please enter your phone number.',eEmail:'Please enter a valid email.',
+      eDate:'Please pick an available date.',eItems:'Please choose at least one pizza or pinsa.',eName:'Please enter your full name.',ePhone:'Please enter your phone number.',eEmail:'Please enter a valid email.',eAlg:'Please tell us whether there are any allergies.',eAlgTxt:'Please specify the allergy or restriction.',
       eTaken:'That date was just booked. Please choose another.',eFail:'The booking could not be completed. Please try again.',eAvail:'We couldn’t check availability. Please try again shortly.',
       back:'‹ Back',next:'Next ›',cDate:'Pick an available date to continue.',cItems:'Choose at least one Pizza or Pinsa to continue.',
       code:'Booking code: ',okTitle:'✅ Thank you! We received your request',okBtn:'OK',changeNote:'✏️ Changes to your order can be made up to 3 days before the event: simply reply to the email you will receive with your final order.',
@@ -796,8 +799,19 @@ Live Cooking Experience: ${eurEL(CONFIG.live)}
 ΓΕΝΙΚΟ ΣΥΝΟΛΟ: ${eurEL(t.total)}
 Γλώσσα πελάτη: ${lang==='en'?'English':'Ελληνικά'}
 
-Σημειώσεις: ${$('notes').value||'—'}`;
+Σημειώσεις: ${notesAll()||'—'}`;
 }
+
+function notesAll(){
+  const a=document.querySelector('input[name=algy]:checked');
+  const al = !a ? '' : (a.value==='yes' ? '⚠️ ΑΛΛΕΡΓΙΑ: '+$('allergyTxt').value.trim() : 'Αλλεργίες: Όχι');
+  const c=$('notes').value.trim();
+  return [al, c?('Σχόλια: '+c):''].filter(Boolean).join('\n');
+}
+document.querySelectorAll('input[name=algy]').forEach(r=>r.addEventListener('change',()=>{
+  const y=document.querySelector('input[name=algy]:checked').value==='yes';
+  $('allergyTxt').style.display=y?'block':'none'; if(y) $('allergyTxt').focus();
+}));
 
 $('submit').onclick = async ()=>{
   const err=[];
@@ -806,6 +820,8 @@ $('submit').onclick = async ()=>{
   if(!$('name').value.trim()) err.push(tr('eName'));
   if(!$('phone').value.trim()) err.push(tr('ePhone'));
   if(!/^\S+@\S+\.\S+$/.test($('email').value.trim())) err.push(tr('eEmail'));
+  const alg=document.querySelector('input[name=algy]:checked');
+  if(!alg) err.push(tr('eAlg')); else if(alg.value==='yes' && !$('allergyTxt').value.trim()) err.push(tr('eAlgTxt'));
   $('err').textContent = err.join('\n'); if(err.length) return;
 
   $('submit').disabled=true; $('submit').textContent=tr('sending');
@@ -832,7 +848,7 @@ $('submit').onclick = async ()=>{
         name:$('name').value, phone:$('phone').value, email:$('email').value,
         helpers:String(t.helpers||0), menu:items, order:items, offer_lines:offerLines,
         subtotal:t.subtotal.toFixed(2), vat:t.vat.toFixed(2), total:t.total.toFixed(2),
-        notes:$('notes').value||'', lang:lang, details:text
+        notes:notesAll(), lang:lang, details:text
       })});
   }catch(e){console.warn(e)}
 
