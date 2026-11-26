@@ -606,14 +606,14 @@ const T = {
       eDate:'Διάλεξε διαθέσιμη ημερομηνία.',eItems:'Διάλεξε τουλάχιστον μία pizza ή pinsa.',eName:'Συμπλήρωσε ονοματεπώνυμο.',ePhone:'Συμπλήρωσε τηλέφωνο.',eEmail:'Συμπλήρωσε έγκυρο email.',
       eTaken:'Η ημερομηνία μόλις έκλεισε. Διάλεξε άλλη.',eFail:'Δεν ολοκληρώθηκε η κράτηση. Δοκίμασε ξανά.',eAvail:'Δεν ήταν δυνατός ο έλεγχος διαθεσιμότητας. Δοκίμασε ξανά σε λίγο.',
       back:'‹ Πίσω',next:'Επόμενο ›',cDate:'Διάλεξε διαθέσιμη ημερομηνία για να συνεχίσεις.',cItems:'Διάλεξε τουλάχιστον μία Pizza ή Pinsa για να συνεχίσεις.',
-      code:'Κωδικός κράτησης: ',
+      code:'Κωδικός κράτησης: ',okTitle:'✅ Ευχαριστούμε! Λάβαμε το αίτημά σας',okBtn:'Εντάξει',changeNote:'✏️ Αλλαγές στην παραγγελία γίνονται έως 3 ημέρες πριν από την εκδήλωση: απαντήστε στο email που θα λάβετε με την τελική σας παραγγελία.',
       done:(d,m)=>`Η ημερομηνία ${d} δεσμεύτηκε για σένα. Θα ελέγξουμε το αίτημά σου και θα επικοινωνήσουμε μαζί σου για την τελική επιβεβαίωση. 📩 Θα λάβεις email στο ${m} — έλεγξε και τον φάκελο Ανεπιθύμητα (Spam) και πάτησε «Δεν είναι ανεπιθύμητο», ώστε να λάβεις κανονικά την επιβεβαίωση και την οικονομική προσφορά.`},
   en:{noDate:'No date selected yet',noItems:'No pizzas selected yet.',helpName:'Extra staff',busy:'Date already booked',
       dow:['MO','TU','WE','TH','FR','SA','SU'],less:'fewer',more:'more',sending:'Sending…',submit:'Send request',
       eDate:'Please pick an available date.',eItems:'Please choose at least one pizza or pinsa.',eName:'Please enter your full name.',ePhone:'Please enter your phone number.',eEmail:'Please enter a valid email.',
       eTaken:'That date was just booked. Please choose another.',eFail:'The booking could not be completed. Please try again.',eAvail:'We couldn’t check availability. Please try again shortly.',
       back:'‹ Back',next:'Next ›',cDate:'Pick an available date to continue.',cItems:'Choose at least one Pizza or Pinsa to continue.',
-      code:'Booking code: ',
+      code:'Booking code: ',okTitle:'✅ Thank you! We received your request',okBtn:'OK',changeNote:'✏️ Changes to your order can be made up to 3 days before the event: simply reply to the email you will receive with your final order.',
       done:(d,m)=>`${d} is now reserved for you. We’ll review your request and get in touch for final confirmation. 📩 You’ll receive an email at ${m} — please also check your Spam folder and mark it as “Not spam” so you receive the confirmation and your quote.`}
 };
 const DESC_EN = {
@@ -836,13 +836,29 @@ $('submit').onclick = async ()=>{
       })});
   }catch(e){console.warn(e)}
 
-  $('form').style.display='none'; $('done').style.display='block'; mbar.remove();
-  $('doneMsg').textContent=tr('done')(longDate(selected),$('email').value);
-  $('doneId').textContent=tr('code')+id;
-  $('waBtn').href='https://wa.me/'+CONFIG.ownerWhatsApp+'?text='+encodeURIComponent(text);
-  $('mailBtn').href='mailto:'+CONFIG.ownerEmail+'?subject='+encodeURIComponent('Κράτηση Bardequee '+id)+'&body='+encodeURIComponent(text);
-  $('done').scrollIntoView({behavior:'smooth',block:'center'});
+  try{sessionStorage.setItem('bq-done',JSON.stringify({msg:tr('done')(longDate(selected),$('email').value),code:tr('code')+id}))}catch(e){}
+  try{history.scrollRestoration='manual'}catch(e){}
+  location.replace(location.pathname+location.search);
 };
+
+/* ---------- Μήνυμα επιτυχίας μετά την κράτηση (η σελίδα έχει ήδη ξαναφορτώσει, στην αρχή) ---------- */
+(()=>{let d=null;try{d=JSON.parse(sessionStorage.getItem('bq-done')||'null');sessionStorage.removeItem('bq-done')}catch(e){}
+  if(!d)return;
+  try{history.scrollRestoration='manual'}catch(e){} scrollTo(0,0);
+  const ov=document.createElement('div');
+  ov.style.cssText='position:fixed;inset:0;z-index:9999;background:rgba(20,12,8,.55);display:flex;align-items:center;justify-content:center;padding:18px';
+  const box=document.createElement('div');
+  box.style.cssText='background:#fff;color:#2b1d14;max-width:520px;width:100%;border-radius:16px;padding:26px 24px;box-shadow:0 20px 60px rgba(0,0,0,.3);font-size:16px;line-height:1.55;max-height:90vh;overflow:auto';
+  const h=document.createElement('h3');h.style.cssText='margin:0 0 12px;font-size:21px';h.textContent=tr('okTitle');
+  const p1=document.createElement('p');p1.style.margin='0 0 12px';p1.textContent=d.msg;
+  const p2=document.createElement('p');p2.style.cssText='margin:0 0 12px;font-weight:bold';p2.textContent=d.code;
+  const p3=document.createElement('p');p3.style.cssText='margin:0 0 20px;padding:10px 12px;background:#fff4e5;border-left:4px solid #e08a00;border-radius:6px';p3.textContent=tr('changeNote');
+  const btn=document.createElement('button');btn.type='button';btn.textContent=tr('okBtn');
+  btn.style.cssText='display:block;width:100%;padding:13px;border:0;border-radius:10px;background:#b5341e;color:#fff;font-size:16px;font-weight:bold;cursor:pointer';
+  btn.onclick=()=>{ov.remove();scrollTo({top:0,behavior:'smooth'})};
+  ov.onclick=e=>{if(e.target===ov)btn.onclick()};
+  box.append(h,p1,p2,p3,btn);ov.appendChild(box);document.body.appendChild(ov);
+})();
 
 /* ---------- 24h time ---------- */
 (()=>{const s=$('time');for(let h=0;h<24;h++)for(const m of ['00','30']){const v=String(h).padStart(2,'0')+':'+m;const o=new Option(v,v);if(v==='17:30')o.selected=true;s.add(o)}})();
