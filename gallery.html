@@ -399,6 +399,7 @@ section[id]{scroll-margin-top:96px}
 <style>.gpage{padding-top:190px}@media(max-width:900px){.gpage{padding-top:140px}}.gback{display:flex;justify-content:center;gap:16px;flex-wrap:wrap;margin-top:90px}
 .gfoot{border-top:1px solid var(--line);padding:34px 0;margin-top:120px}.gfoot .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;font-size:11px;letter-spacing:.26em;color:var(--muted)}.vgrid{grid-template-columns:repeat(4,1fr)}@media(max-width:900px){.vgrid{grid-template-columns:1fr 1fr}}
 </style>
+<style>.gbanner{position:relative;height:78vh;min-height:460px;max-height:860px;overflow:hidden;background:#000 url(gallery/video/hero-villa.jpg) center/cover;margin:84px 0 110px;border-bottom:1px solid var(--line)}.gbanner:before{content:"";position:absolute;inset:-40px;background:inherit;filter:blur(28px) brightness(.45);z-index:0}.gbanner video{position:relative;z-index:1;display:block;height:100%;aspect-ratio:9/16;margin:0 auto;object-fit:cover;box-shadow:0 0 80px rgba(0,0,0,.6)}.gpage.has-banner{padding-top:0}@media(max-width:700px){.gbanner{height:75vh;min-height:380px;margin-bottom:70px}.gbanner video{width:100%;aspect-ratio:auto}}</style>
 </head>
 <body>
 <header class="nav solid" id="nav">
@@ -413,7 +414,9 @@ section[id]{scroll-margin-top:96px}
 <button aria-label="Menu" class="burger" id="burger"><i></i><i></i><i></i></button>
 </div>
 </header>
-<main class="gpage">
+<main class="gpage has-banner">
+<!-- VIDEO BANNER -->
+<div class="gbanner"><video autoplay muted loop playsinline preload="auto" poster="gallery/video/hero-villa.jpg" src="gallery/video/hero-villa.mp4" aria-label="Bardequee live cooking σε βίλα"></video></div>
 <!-- GALLERY -->
 <section id="gallery">
 <div class="wrap">
