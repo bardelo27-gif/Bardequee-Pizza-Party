@@ -389,7 +389,8 @@ section[id]{scroll-margin-top:96px}
 .lbx .ct{position:absolute;bottom:24px;left:0;right:0;text-align:center;font-size:11px;letter-spacing:.3em;color:var(--muted)}
 </style>
 <style>.gpage{padding-top:190px}@media(max-width:900px){.gpage{padding-top:140px}}.gback{display:flex;justify-content:center;gap:16px;flex-wrap:wrap;margin-top:90px}
-.gfoot{border-top:1px solid var(--line);padding:34px 0;margin-top:120px}.gfoot .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;font-size:11px;letter-spacing:.26em;color:var(--muted)}</style>
+.gfoot{border-top:1px solid var(--line);padding:34px 0;margin-top:120px}.gfoot .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;font-size:11px;letter-spacing:.26em;color:var(--muted)}.vgrid{grid-template-columns:repeat(4,1fr)}@media(max-width:900px){.vgrid{grid-template-columns:1fr 1fr}}
+</style>
 </head>
 <body>
 <header class="nav solid" id="nav">
@@ -418,15 +419,19 @@ section[id]{scroll-margin-top:96px}
 <figure data-i="0"><img src="gallery/thumbs/01-garden-table.jpg" data-full="gallery/photos/01-garden-table.jpg" alt="Pizzas σε τραπέζι κήπου με λουλούδια" loading="lazy" decoding="async"/></figure>
 <figure data-i="1"><img src="gallery/thumbs/02-spicy-salami-logo.jpg" data-full="gallery/photos/02-spicy-salami-logo.jpg" alt="Pizza πικάντικο σαλάμι Bardequee" loading="lazy" decoding="async"/></figure>
 <figure data-i="2"><img src="gallery/thumbs/03-margherita-top.jpg" data-full="gallery/photos/03-margherita-top.jpg" alt="Margherita με leopard κόρα" loading="lazy" decoding="async"/></figure>
-<figure data-i="3"><img src="gallery/thumbs/04-mortadella-burrata.jpg" data-full="gallery/photos/04-mortadella-burrata.jpg" alt="Pizza μορταδέλα, burrata και φιστίκι" loading="lazy" decoding="async"/></figure>
-<figure data-i="4"><img src="gallery/thumbs/05-salami-kraft.jpg" data-full="gallery/photos/05-salami-kraft.jpg" alt="Pizza σαλάμι από ψηλά" loading="lazy" decoding="async"/></figure>
-<figure data-i="5"><img src="gallery/thumbs/06-raw-pizza-peel.jpg" data-full="gallery/photos/06-raw-pizza-peel.jpg" alt="Ωμή pizza στο φτυάρι πριν το ψήσιμο" loading="lazy" decoding="async"/></figure>
-<figure data-i="6"><img src="gallery/thumbs/07-salami-garden-table.jpg" data-full="gallery/photos/07-salami-garden-table.jpg" alt="Κομμένη pizza σαλάμι σε τραπέζι κήπου" loading="lazy" decoding="async"/></figure>
-<figure data-i="7"><img src="gallery/thumbs/08-prosciutto-rocket.jpg" data-full="gallery/photos/08-prosciutto-rocket.jpg" alt="Pizza προσούτο και ρόκα" loading="lazy" decoding="async"/></figure>
-<figure data-i="8"><img src="gallery/thumbs/09-sausage-logo.jpg" data-full="gallery/photos/09-sausage-logo.jpg" alt="Pizza με λουκάνικο" loading="lazy" decoding="async"/></figure>
-<figure data-i="9"><img src="gallery/thumbs/10-margherita-sliced.jpg" data-full="gallery/photos/10-margherita-sliced.jpg" alt="Κομμένη margherita με βασιλικό" loading="lazy" decoding="async"/></figure>
-<figure data-i="10"><img src="gallery/thumbs/11-mortadella-ooni.jpg" data-full="gallery/photos/11-mortadella-ooni.jpg" alt="Pizza μορταδέλα δίπλα στον φούρνο" loading="lazy" decoding="async"/></figure>
-<figure data-i="11"><img src="gallery/thumbs/12-team.jpg" data-full="gallery/photos/12-team.jpg" alt="Η ομάδα του Bardequee σε live cooking" loading="lazy" decoding="async"/></figure>
+<figure data-i="3"><img src="gallery/thumbs/13-salami-garden-close.jpg" data-full="gallery/photos/13-salami-garden-close.jpg" alt="Pizza σαλάμι σε κήπο το σούρουπο" loading="lazy" decoding="async"/></figure>
+<figure data-i="4"><img src="gallery/thumbs/04-mortadella-burrata.jpg" data-full="gallery/photos/04-mortadella-burrata.jpg" alt="Pizza μορταδέλα, burrata και φιστίκι" loading="lazy" decoding="async"/></figure>
+<figure data-i="5"><img src="gallery/thumbs/05-salami-kraft.jpg" data-full="gallery/photos/05-salami-kraft.jpg" alt="Pizza σαλάμι από ψηλά" loading="lazy" decoding="async"/></figure>
+<figure data-i="6"><img src="gallery/thumbs/06-raw-pizza-peel.jpg" data-full="gallery/photos/06-raw-pizza-peel.jpg" alt="Ωμή pizza στο φτυάρι πριν το ψήσιμο" loading="lazy" decoding="async"/></figure>
+<figure data-i="7"><img src="gallery/thumbs/15-margherita-stripes.jpg" data-full="gallery/photos/15-margherita-stripes.jpg" alt="Margherita σε ριγέ τραπεζομάντιλο" loading="lazy" decoding="async"/></figure>
+<figure data-i="8"><img src="gallery/thumbs/07-salami-garden-table.jpg" data-full="gallery/photos/07-salami-garden-table.jpg" alt="Κομμένη pizza σαλάμι σε τραπέζι κήπου" loading="lazy" decoding="async"/></figure>
+<figure data-i="9"><img src="gallery/thumbs/14-mortadella-logo-top.jpg" data-full="gallery/photos/14-mortadella-logo-top.jpg" alt="Pizza μορταδέλα και φιστίκι από ψηλά" loading="lazy" decoding="async"/></figure>
+<figure data-i="10"><img src="gallery/thumbs/08-prosciutto-rocket.jpg" data-full="gallery/photos/08-prosciutto-rocket.jpg" alt="Pizza προσούτο και ρόκα" loading="lazy" decoding="async"/></figure>
+<figure data-i="11"><img src="gallery/thumbs/09-sausage-logo.jpg" data-full="gallery/photos/09-sausage-logo.jpg" alt="Pizza με λουκάνικο" loading="lazy" decoding="async"/></figure>
+<figure data-i="12"><img src="gallery/thumbs/16-margherita-ooni.jpg" data-full="gallery/photos/16-margherita-ooni.jpg" alt="Margherita μπροστά στον φούρνο" loading="lazy" decoding="async"/></figure>
+<figure data-i="13"><img src="gallery/thumbs/10-margherita-sliced.jpg" data-full="gallery/photos/10-margherita-sliced.jpg" alt="Κομμένη margherita με βασιλικό" loading="lazy" decoding="async"/></figure>
+<figure data-i="14"><img src="gallery/thumbs/11-mortadella-ooni.jpg" data-full="gallery/photos/11-mortadella-ooni.jpg" alt="Pizza μορταδέλα δίπλα στον φούρνο" loading="lazy" decoding="async"/></figure>
+<figure data-i="15"><img src="gallery/thumbs/12-team.jpg" data-full="gallery/photos/12-team.jpg" alt="Η ομάδα του Bardequee σε live cooking" loading="lazy" decoding="async"/></figure>
 </div></div>
 <div class="gal-pane" id="gv">
 <div class="vfeat">
@@ -435,6 +440,7 @@ section[id]{scroll-margin-top:96px}
 </div>
 <div class="vgrid">
 <div class="vc"><video muted loop playsinline preload="none" poster="gallery/video/live-cooking.jpg" data-src="gallery/video/live-cooking.mp4"></video><small>Live cooking</small></div>
+<div class="vc"><video muted loop playsinline preload="none" poster="gallery/video/sauce-dough.jpg" data-src="gallery/video/sauce-dough.mp4"></video><small>Sauce &amp; dough</small></div>
 <div class="vc"><video muted loop playsinline preload="none" poster="gallery/video/mortadella-garden.jpg" data-src="gallery/video/mortadella-garden.mp4"></video><small>Mortadella &amp; pistachio</small></div>
 <div class="vc"><video muted loop playsinline preload="none" poster="gallery/video/mortadella-top.jpg" data-src="gallery/video/mortadella-top.mp4"></video><small>Fresh from the oven</small></div>
 </div>
