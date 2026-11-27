@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Bardeque | Panagiotis Bardis</title>
+<meta name="description" content="Bardeque – The Moving Pizza Co. Ναπολιτάνικη πίτσα στον χώρο σας.">
+<meta name="theme-color" content="#070707">
+<link rel="icon" href="/favicon.ico">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png?v=4">
+<meta property="og:title" content="Bardeque – The Moving Pizza Co.">
+<meta property="og:description" content="Panagiotis Bardis · Founder">
+<meta property="og:image" content="https://bardeque.gr/icon-512.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#070707;--panel:#0f0f0e;--line:rgba(212,175,55,.22);--gold:#D4AF37;--gold2:#E9CF83;--ivory:#F3EBDD;--muted:#9C9384;
+--serif:'Cormorant Garamond',Georgia,serif;--sans:'Inter',system-ui,Arial,sans-serif}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:var(--bg)}
+body{color:var(--ivory);font-family:var(--sans);font-weight:300;-webkit-font-smoothing:antialiased;min-height:100svh;display:flex;justify-content:center;
+background:radial-gradient(ellipse 80% 50% at 50% 0%,rgba(212,175,55,.10),transparent 70%),var(--bg)}
+a{color:inherit;text-decoration:none}
+.wrap{width:100%;max-width:420px;padding:calc(env(safe-area-inset-top) + 48px) 24px calc(env(safe-area-inset-bottom) + 40px);display:flex;flex-direction:column;align-items:center;text-align:center}
+.logo{width:132px;height:132px;border-radius:50%;background:#fff url(../icon-512.png) center/cover;box-shadow:0 0 0 1px var(--line),0 0 0 8px var(--bg),0 0 0 9px var(--line),0 20px 60px rgba(212,175,55,.15);opacity:0;animation:in .8s .1s forwards}
+.eyebrow{margin-top:34px;font-size:10px;letter-spacing:.42em;text-transform:uppercase;color:var(--gold);font-weight:500;opacity:0;animation:in .8s .25s forwards}
+h1{font-family:var(--serif);font-weight:400;font-size:44px;line-height:1;margin-top:14px;letter-spacing:-.01em;opacity:0;animation:in .8s .35s forwards}
+h1 em{font-style:italic;color:var(--gold)}
+.role{margin-top:10px;font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);opacity:0;animation:in .8s .45s forwards}
+.tag{margin-top:22px;font-family:var(--serif);font-style:italic;font-size:19px;color:#cfc6b6;max-width:300px;line-height:1.35;opacity:0;animation:in .8s .55s forwards}
+.rule{width:44px;height:1px;background:var(--gold);margin:30px 0;opacity:.7}
+.list{width:100%;display:flex;flex-direction:column;gap:10px}
+.item{display:flex;align-items:center;gap:16px;padding:16px 18px;border:1px solid var(--line);background:linear-gradient(180deg,rgba(255,255,255,.02),transparent);transition:.25s;text-align:left;opacity:0;animation:in .7s forwards}
+.item:active,.item:hover{border-color:var(--gold);background:rgba(212,175,55,.06)}
+.item svg{width:20px;height:20px;flex:none;stroke:var(--gold);fill:none;stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round}
+.item div{flex:1;min-width:0}
+.item b{display:block;font-weight:500;font-size:11px;letter-spacing:.24em;text-transform:uppercase}
+.item small{display:block;color:var(--muted);font-size:13px;margin-top:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.item i{font-style:normal;color:var(--gold);font-size:18px}
+.primary{background:var(--gold);border-color:var(--gold);color:#0a0a0a;justify-content:center;padding:18px}
+.primary svg{stroke:#0a0a0a}
+.primary b{font-size:11.5px;letter-spacing:.3em}
+.primary:active,.primary:hover{background:var(--gold2)}
+.foot{margin-top:38px;font-size:10px;letter-spacing:.3em;color:#5f5a52;text-transform:uppercase}
+.foot a{color:var(--muted)}
+.lang{position:fixed;top:calc(env(safe-area-inset-top) + 16px);right:18px;font-size:10px;letter-spacing:.24em;color:var(--muted);border:1px solid rgba(255,255,255,.1);padding:7px 10px;background:none;cursor:pointer;font-family:var(--sans)}
+@keyframes in{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<button class="lang" id="lang" type="button">EN</button>
+<main class="wrap">
+  <div class="logo" role="img" aria-label="Bardeque logo"></div>
+  <p class="eyebrow">The Moving Pizza Co.</p>
+  <h1>Panagiotis <em>Bardis</em></h1>
+  <p class="role" data-el="Ιδρυτής · Pizzaiolo" data-en="Founder · Pizzaiolo">Ιδρυτής · Pizzaiolo</p>
+  <p class="tag" data-el="Αυθεντική ναπολιτάνικη πίτσα, ψημένη μπροστά σας, στον χώρο σας." data-en="Authentic Neapolitan pizza, fired in front of you, wherever you are.">Αυθεντική ναπολιτάνικη πίτσα, ψημένη μπροστά σας, στον χώρο σας.</p>
+  <span class="rule"></span>
+
+  <nav class="list">
+    <a class="item primary" href="/#book" style="animation-delay:.65s">
+      <svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="1"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>
+      <b data-el="Κράτηση ημερομηνίας" data-en="Book your date">Κράτηση ημερομηνίας</b>
+    </a>
+    <a class="item" href="/contact.vcf" style="animation-delay:.72s">
+      <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/></svg>
+      <div><b data-el="Αποθήκευση επαφής" data-en="Save contact">Αποθήκευση επαφής</b><small data-el="Προσθήκη στο κινητό σας" data-en="Add to your phone">Προσθήκη στο κινητό σας</small></div><i>↓</i>
+    </a>
+    <a class="item" href="tel:+306972295910" style="animation-delay:.79s">
+      <svg viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg>
+      <div><b data-el="Κλήση" data-en="Call">Κλήση</b><small>+30 697 229 5910</small></div><i>→</i>
+    </a>
+    <a class="item" href="https://wa.me/306972295910" target="_blank" rel="noopener" style="animation-delay:.86s">
+      <svg viewBox="0 0 24 24"><path d="M3 21l1.6-4.6A9 9 0 1 1 8 19.8z"/><path d="M9 9.5c0 3 2.5 5.5 5.5 5.5l1-1.5-2-1-1 .8a4 4 0 0 1-1.8-1.8l.8-1-1-2z"/></svg>
+      <div><b>WhatsApp</b><small data-el="Στείλτε μας μήνυμα" data-en="Send us a message">Στείλτε μας μήνυμα</small></div><i>→</i>
+    </a>
+    <a class="item" href="https://instagram.com/bardequee" target="_blank" rel="noopener" style="animation-delay:.93s">
+      <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".6"/></svg>
+      <div><b>Instagram</b><small>@bardequee</small></div><i>→</i>
+    </a>
+    <a class="item" href="mailto:bardequee@outlook.com.gr" style="animation-delay:1s">
+      <svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="1"/><path d="M3 6l9 7 9-7"/></svg>
+      <div><b>Email</b><small>bardequee@outlook.com.gr</small></div><i>→</i>
+    </a>
+    <a class="item" href="/" style="animation-delay:1.07s">
+      <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.5 3.8 5.5 3.8 9S14.5 18.5 12 21c-2.5-2.5-3.8-5.5-3.8-9S9.5 5.5 12 3"/></svg>
+      <div><b data-el="Ιστοσελίδα & Μενού" data-en="Website & Menu">Ιστοσελίδα & Μενού</b><small>bardeque.gr</small></div><i>→</i>
+    </a>
+    <a class="item" href="/gallery.html" style="animation-delay:1.14s">
+      <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="1"/><circle cx="9" cy="10" r="2"/><path d="M21 16l-5-5-9 9"/></svg>
+      <div><b data-el="Γκαλερί" data-en="Gallery">Γκαλερί</b><small data-el="Φωτογραφίες από events" data-en="Photos from our events">Φωτογραφίες από events</small></div><i>→</i>
+    </a>
+  </nav>
+
+  <p class="foot">© <span id="yr"></span> Bardeque · <a href="/">bardeque.gr</a></p>
+</main>
+<script>
+document.getElementById('yr').textContent=new Date().getFullYear();
+(function(){
+  var cur=(navigator.language||'el').toLowerCase().startsWith('el')?'el':'en',btn=document.getElementById('lang');
+  function set(l){cur=l;document.documentElement.lang=l;btn.textContent=l==='el'?'EN':'ΕΛ';
+    document.querySelectorAll('[data-el]').forEach(function(e){e.textContent=e.getAttribute('data-'+l)});}
+  btn.onclick=function(){set(cur==='el'?'en':'el')};set(cur);
+})();
+</script>
+<script>
+(function(){
+  try{
+    if(location.search.includes('me=1')) localStorage.setItem('bq_me','1');
+    if(localStorage.getItem('bq_me')||sessionStorage.getItem('bq_v')) return;
+    sessionStorage.setItem('bq_v','1');
+    fetch('https://cuagotbmdxmuxnwnoybu.supabase.co/functions/v1/visit-notify',{
+      method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({page:location.pathname,ref:document.referrer,lang:navigator.language,ua:navigator.userAgent})
+    });
+  }catch(e){}
+})();
+</script>
+</body>
+</html>
