@@ -387,6 +387,14 @@ section[id]{scroll-margin-top:96px}
 .lbx button:hover{background:var(--gold);color:#000}
 .lbx .x{top:22px;right:22px}.lbx .pv{left:22px;top:50%;transform:translateY(-50%)}.lbx .nx{right:22px;top:50%;transform:translateY(-50%)}
 .lbx .ct{position:absolute;bottom:24px;left:0;right:0;text-align:center;font-size:11px;letter-spacing:.3em;color:var(--muted)}
+
+/* flags */
+.lang-btn{gap:10px;padding:8px 12px}
+.lang-btn span{display:inline-flex;width:26px;height:17px;overflow:hidden;border-radius:2px;opacity:.38;filter:grayscale(.7);transition:.25s;box-shadow:0 0 0 1px rgba(255,255,255,.12)}
+.lang-btn span svg{width:100%;height:100%;display:block}
+.lang-btn span.on{opacity:1;filter:none;box-shadow:0 0 0 1px var(--gold)}
+.lang-btn:hover span{opacity:.85;filter:none}
+.lang-btn i{width:1px;height:16px;background:var(--line);opacity:1}
 </style>
 <style>.gpage{padding-top:190px}@media(max-width:900px){.gpage{padding-top:140px}}.gback{display:flex;justify-content:center;gap:16px;flex-wrap:wrap;margin-top:90px}
 .gfoot{border-top:1px solid var(--line);padding:34px 0;margin-top:120px}.gfoot .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;font-size:11px;letter-spacing:.26em;color:var(--muted)}.vgrid{grid-template-columns:repeat(4,1fr)}@media(max-width:900px){.vgrid{grid-template-columns:1fr 1fr}}
@@ -402,7 +410,7 @@ section[id]{scroll-margin-top:96px}
 <a href="index.html#follow">Follow</a>
 <a class="btn" href="index.html#book" data-i18n="nav_book">Book an event</a>
 </nav>
-<button class="lang-btn" id="langBtn" type="button" aria-label="Language / Γλώσσα"><span data-l="el">EL</span><i>/</i><span data-l="en">EN</span></button>
+<button class="lang-btn" id="langBtn" type="button" aria-label="Language / Γλώσσα"><span data-l="el" title="Ελληνικά"><svg viewBox="0 0 27 18" aria-hidden="true"><rect width="27" height="18" fill="#0D5EAF"/><path d="M0 3h27M0 7h27M0 11h27M0 15h27" stroke="#fff" stroke-width="2"/><rect width="10" height="10" fill="#0D5EAF"/><path d="M5 0v10M0 5h10" stroke="#fff" stroke-width="2"/></svg></span><i></i><span data-l="en" title="English"><svg viewBox="0 0 60 30" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><clipPath id="ukc"><path d="M30,15h30v15zv15h-30zh-30v-15zv-15h30z"/></clipPath><path d="M0,0v30h60v-30z" fill="#012169"/><path d="M0,0L60,30M60,0L0,30" stroke="#fff" stroke-width="6"/><path d="M0,0L60,30M60,0L0,30" clip-path="url(#ukc)" stroke="#C8102E" stroke-width="4"/><path d="M30,0v30M0,15h60" stroke="#fff" stroke-width="10"/><path d="M30,0v30M0,15h60" stroke="#C8102E" stroke-width="6"/></svg></span></button>
 <button aria-label="Menu" class="burger" id="burger"><i></i><i></i><i></i></button>
 </div>
 </header>
