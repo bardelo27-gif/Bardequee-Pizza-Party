@@ -985,7 +985,8 @@ applyLang(); loadAvailability();
   const lg=()=>{try{return localStorage.getItem('bq-lang')||'el'}catch(e){return 'el'}};
   const send=(event,label)=>{try{fetch(U,{method:'POST',keepalive:true,headers:{apikey:K,Authorization:'Bearer '+K,'Content-Type':'application/json',Prefer:'return=minimal'},
     body:JSON.stringify({page,event,label:label||null,referrer:event==='view'?ref:null,device:dev,lang:lg()})}).catch(()=>{})}catch(e){}};
-  send('view');
+  const own=(()=>{try{const q=new URLSearchParams(location.search).get('owner');if(q==='1')localStorage.setItem('bq-owner','1');if(q==='0')localStorage.removeItem('bq-owner');return localStorage.getItem('bq-owner')==='1'}catch(e){return false}})();
+  send('view',own?'owner':null);
   document.addEventListener('click',e=>{const a=e.target.closest('a,button,figure');if(!a)return;
     const h=a.getAttribute('href')||'';let l=null;
     if(a.id==='submit')l='submit_booking';
