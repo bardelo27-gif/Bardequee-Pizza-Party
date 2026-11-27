@@ -985,18 +985,6 @@ applyLang(); loadAvailability();
     if(l)send('click',l)},true);
 })();
 </script>
-<script>
-(function(){
-  try{
-    if(location.search.includes('me=1')) localStorage.setItem('bq_me','1');
-    if(localStorage.getItem('bq_me')||sessionStorage.getItem('bq_v')) return;
-    sessionStorage.setItem('bq_v','1');
-    fetch('https://cuagotbmdxmuxnwnoybu.supabase.co/functions/v1/visit-notify',{
-      method:'POST',headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({page:location.pathname,ref:document.referrer,lang:navigator.language,ua:navigator.userAgent})
-    });
-  }catch(e){}
-})();
-</script>
+<script src="/track.js?v=1"></script>
 </body>
 </html>
